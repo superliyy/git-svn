@@ -1,0 +1,144 @@
+git三个区：
+工作区：编写代码
+暂存区：暂存代码，作为过渡，避免误操作，保护工作区和版本区
+版本区：管理版本，操作产生版本
+
+配置用户名邮箱
+git config --global user.name <name>
+git config --global user.email <email>
+
+git config --list
+
+git status 查看仓库状态
+
+1.从远程仓库下载代码
+git clone <远程仓库url>
+
+
+2.将代码从工作区提交到暂存区
+命令是：add
+git add <文件名> 
+
+3.将所有代码从暂存区提交到版本区中
+git commit -m  <日志内容>
+
+4.将本地版本提交到远程仓库
+git push 远程仓库的名字 分支名字
+git push origin master
+
+5.将所有代码从工作区提交到暂存区
+git add .
+
+6.将所有代码从工作区经过暂存区直接到版本区
+ git commit -a -m <日志>
+ 
+7.代码比较不同
+git diff 比较工作区与缓存区的不同
+git diff --cached 比较缓存区与版本区的不同
+git diff master 比较工作区与版本区的不同
+
+8.查看日志
+git log
+
+9.撤销操作
+撤销工作区复原到暂存区的状态,
+如果暂存区没有可撤销的，那就直接撤销到版本区的状态
+git checkout -- <文件名>
+
+撤销工作区提交暂存区中的代码
+git reset HEAD <文件名>
+
+
+10.删除操作
+需要先手动删除了工作区中的文件，才能执行该命令删除缓存区中的文件
+git rm <文件名字>
+
+强制删除缓存区和工作区中的文件
+git rm -f <文件名字>
+
+仅仅删除暂存区中的文件
+git rm --cached <文件名字>
+
+
+11.代码回滚（涉及到版本号）
+回滚到某个版本
+git reset --hard <版本号>
+git reset --hard HEAD~num 往回回滚多少个版本号
+
+
+12.回到已经被回滚掉的版本状态
+首先找到操作的版本号 git reflog
+再执行git reset --hard <版本号> 
+
+13.查看远程仓库名字
+git remote
+
+git remote -v 查看远程仓库名字和地址
+
+14.解决冲突两个办法
+fetch -->> 需要手动合并代码并解决冲突
+pull -->> 自动合并，手动解决冲突
+
+fetch的操作：
+git fetch 将远程仓库的代码抓取到本地，但是没有合并
+如果需要查看不同 git diff master origin/master
+git merge origin/master 合并
+解决冲突
+再次执行提交
+git commit -a -m <日志>
+git push origin master
+
+pull的操作：
+git pull
+解决冲突
+再次执行提交
+git commit -a -m <日志>
+git push origin master
+
+
+15.fork 的操作
+
+16.分支
+git branch 查看分支 *代表意思就是所在分支
+
+创建分支
+git branch <分支名字>
+
+切换分支
+git checkout <分支名字>
+
+创建并切换分支
+git checkout -b <分支名字>
+
+
+主分支合并分支代码
+先切到主分支上
+执行merge
+git merge <分支名字>
+
+
+查看合并过的分支
+git merge --merged
+查看未合并过的分支
+git merge --no-merged
+
+删除已经合并分支
+git branch -d <分支名字>
+
+删除未合并分支
+git branch -D <分支名字>
+
+提交分支到远程仓库
+在该分支下执行
+git push origin <分支名字>
+
+在gitHub上直接创建分支
+
+
+17.tag
+
+
+
+
+
+
